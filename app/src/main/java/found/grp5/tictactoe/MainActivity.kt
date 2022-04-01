@@ -15,9 +15,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val multiplayer_btn: Button = findViewById(R.id.multiplayer_btn);
-        multiplayer_btn.setOnClickListener {
+        val multiplayerBtn: Button = findViewById(R.id.multiplayer_btn);
+        multiplayerBtn.setOnClickListener {
             //Toast.makeText(this@MainActivity, "You clicked me.", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, Board::class.java)
+            startActivity(intent)
+        }
+
+        val vsComputerBtn: Button = findViewById(R.id.vs_comp_btn);
+        vsComputerBtn.setOnClickListener {
             val intent = Intent(this, Board::class.java)
             startActivity(intent)
         }
