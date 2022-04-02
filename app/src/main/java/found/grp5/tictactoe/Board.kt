@@ -6,7 +6,8 @@ import android.util.TypedValue
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_board.*
+import found.grp5.tictactoe.databinding.ActivityBoardBinding
+
 
 class Board : AppCompatActivity(), View.OnClickListener {
 
@@ -14,20 +15,23 @@ class Board : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_board)
 
-        button_00.setOnClickListener(this)
-        button_01.setOnClickListener(this)
-        button_02.setOnClickListener(this)
+        val viewbinding = ActivityBoardBinding.inflate(layoutInflater)
+        setContentView(viewbinding.root)
 
-        button_10.setOnClickListener(this)
-        button_11.setOnClickListener(this)
-        button_12.setOnClickListener(this)
+        viewbinding.button00.setOnClickListener(this)
+        viewbinding.button01.setOnClickListener(this)
+        viewbinding.button02.setOnClickListener(this)
 
-        button_20.setOnClickListener(this)
-        button_21.setOnClickListener(this)
-        button_22.setOnClickListener(this)
+        viewbinding.button10.setOnClickListener(this)
+        viewbinding.button11.setOnClickListener(this)
+        viewbinding.button12.setOnClickListener(this)
+
+        viewbinding.button20.setOnClickListener(this)
+        viewbinding.button21.setOnClickListener(this)
+        viewbinding.button22.setOnClickListener(this)
     }
+
 
     override fun onClick(view: View?) {
         val button: Button = findViewById(view!!.id)
@@ -39,4 +43,5 @@ class Board : AppCompatActivity(), View.OnClickListener {
         Toast.makeText(this@Board, "Next turn: ${if (xTurn) "O" else "X"}", Toast.LENGTH_SHORT).show()
         xTurn = !xTurn
     }
+
 }
