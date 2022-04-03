@@ -12,6 +12,7 @@ import found.grp5.tictactoe.databinding.ActivityBoardBinding
 class Board : AppCompatActivity(), View.OnClickListener {
 
     private var xTurn = true
+    private var toast: Toast? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,14 +35,15 @@ class Board : AppCompatActivity(), View.OnClickListener {
 
 
     override fun onClick(view: View?) {
+        toast?.cancel()
         val button: Button = findViewById(view!!.id)
         if (button.text == "O" || button.text == "X") {
             return
         }
         button.text = if (xTurn) "X" else "O"
         button.setTextSize(TypedValue.COMPLEX_UNIT_SP, 72f)
-        Toast.makeText(this@Board, "Next turn: ${if (xTurn) "O" else "X"}", Toast.LENGTH_SHORT).show()
+        toast = Toast.makeText(this@Board, "Next turn: ${if (xTurn) "O" else "X"}", Toast.LENGTH_SHORT)
+        toast?.show()
         xTurn = !xTurn
     }
-
 }

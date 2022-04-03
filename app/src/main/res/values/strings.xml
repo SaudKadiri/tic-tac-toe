@@ -2,4 +2,10 @@
     <string name="app_name">Tictactoe</string>
     <string name="multiplayer">Multiplayer</string>
     <string name="vs_computer">VS Computer</string>
+    <string name="play_as">Play as</string>
+    <string name="x_start_the_game_o_follows">X start the game O follows</string>
+    <string name="o_button_lbl">O button</string>
+    <string name="o">O</string>
+    <string name="x">X</string>
+    <string name="x_label">X label</string>
 </resources>

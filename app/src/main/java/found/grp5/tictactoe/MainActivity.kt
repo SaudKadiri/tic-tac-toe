@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.content.Intent
 
-//import android.widget.Toast
-
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +13,6 @@ class MainActivity : AppCompatActivity() {
 
         val multiplayerBtn: Button = findViewById(R.id.multiplayer_btn)
         multiplayerBtn.setOnClickListener {
-//            Toast.makeText(this@MainActivity, "You clicked me.", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, Board::class.java)
             startActivity(intent)
         }
