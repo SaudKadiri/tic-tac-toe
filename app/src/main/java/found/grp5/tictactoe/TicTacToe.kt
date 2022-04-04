@@ -32,4 +32,13 @@ class TicTacToe {
 
         return  Win(null, arrayOf(Pair(0,0), Pair(0,1), Pair(1, 1)))//null
     }
+
+    fun draw(board: Array<CharArray>): Boolean {
+        for (row in board) {
+            if (row.contains('\u0000')) {
+                return false
+            }
+        }
+        return true
+    }
 }

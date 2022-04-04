@@ -75,6 +75,14 @@ class Board : AppCompatActivity(), View.OnClickListener {
                 val btn: Button = findViewById(btnId)
                 btn.setBackgroundColor(color)
             }
+        } else if (ttt.draw(grid)) {
+            for (i in 0 .. 2) {
+                for (j in 0 .. 2) {
+                    val btnId = resources.getIdentifier("button_${i}${j}", "id", packageName)
+                    val btn: Button = findViewById(btnId)
+                    btn.setBackgroundColor(Color.BLACK)
+                }
+            }
         }
         // get a toast showing who has the next turn
         toast = Toast.makeText(this@Board, "Next turn: ${if (xTurn) "O" else "X"}", Toast.LENGTH_SHORT)
