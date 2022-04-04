@@ -1,5 +1,6 @@
 package found.grp5.tictactoe
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.TypedValue
@@ -9,10 +10,10 @@ import android.widget.Toast
 import found.grp5.tictactoe.databinding.ActivityBoardBinding
 
 class Board : AppCompatActivity(), View.OnClickListener {
-    val EMPTY = '\u0000'
     private var xTurn = true
     private var toast: Toast? = null
     private var grid: Array<CharArray> = Array(3) { CharArray(3) }
+    val ttt = TicTacToe()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +66,16 @@ class Board : AppCompatActivity(), View.OnClickListener {
         // set the text size on the button
         button.setTextSize(TypedValue.COMPLEX_UNIT_SP, 72f)
 
+        // winner return winner's name if there is one else null
+        val winner = ttt.winner(grid)
+        if (winner.name != null) {
+            val color = Color.GREEN
+            for (b in winner.co_ords) {
+                val btnId = resources.getIdentifier("button_${b.first}${b.second}", "id", packageName)
+                val btn: Button = findViewById(btnId)
+                btn.setBackgroundColor(color)
+            }
+        }
         // get a toast showing who has the next turn
         toast = Toast.makeText(this@Board, "Next turn: ${if (xTurn) "O" else "X"}", Toast.LENGTH_SHORT)
 
