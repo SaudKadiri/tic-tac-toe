@@ -24,13 +24,13 @@ class TicTacToe {
 
         // Check diagonals
         if (board[0][0] != '\u0000' && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
-            return  Win(board[0][0], arrayOf(Pair(0,0), Pair(1,1), Pair(2, 2)))
+            return  Win(board[0][0], arrayOf(Pair(0, 0), Pair(1, 1), Pair(2, 2)))
         }
         if (board[0][2] != '\u0000' && board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
-            return  Win(board[0][2], arrayOf(Pair(0,2), Pair(1,1), Pair(2, 0)))
+            return  Win(board[0][2], arrayOf(Pair(0, 2), Pair(1, 1), Pair(2, 0)))
         }
 
-        return  Win(null, arrayOf(Pair(0,0), Pair(0,1), Pair(1, 1)))//null
+        return  Win(null, arrayOf(Pair(0, 0), Pair(0, 1), Pair(1, 1)))
     }
 
     fun draw(board: Array<CharArray>): Boolean {

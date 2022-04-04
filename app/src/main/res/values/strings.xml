@@ -8,4 +8,7 @@
     <string name="o">O</string>
     <string name="x">X</string>
     <string name="x_label">X label</string>
+    <string name="close_button">Close button</string>
+    <string name="winner_s_trophy">Winner\'s trophy</string>
+    <string name="winner">Winner</string>
 </resources>

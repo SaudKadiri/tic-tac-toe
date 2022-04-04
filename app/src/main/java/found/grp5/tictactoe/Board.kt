@@ -1,6 +1,8 @@
 package found.grp5.tictactoe
 
+import android.app.Dialog
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.TypedValue
@@ -14,6 +16,8 @@ class Board : AppCompatActivity(), View.OnClickListener {
     private var toast: Toast? = null
     private var grid: Array<CharArray> = Array(3) { CharArray(3) }
     val ttt = TicTacToe()
+    private var hasEnded = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +40,10 @@ class Board : AppCompatActivity(), View.OnClickListener {
 
 
     override fun onClick(view: View?) {
+        if (hasEnded) {
+            return
+        }
+
         toast?.cancel()
 
         // get the actual button which was pressed
@@ -69,13 +77,17 @@ class Board : AppCompatActivity(), View.OnClickListener {
         // winner return winner's name if there is one else null
         val winner = ttt.winner(grid)
         if (winner.name != null) {
+            hasEnded = true
             val color = Color.GREEN
             for (b in winner.co_ords) {
                 val btnId = resources.getIdentifier("button_${b.first}${b.second}", "id", packageName)
                 val btn: Button = findViewById(btnId)
                 btn.setBackgroundColor(color)
             }
+            showWinnerDialog()
+            return
         } else if (ttt.draw(grid)) {
+            hasEnded = true
             for (i in 0 .. 2) {
                 for (j in 0 .. 2) {
                     val btnId = resources.getIdentifier("button_${i}${j}", "id", packageName)
@@ -92,5 +104,14 @@ class Board : AppCompatActivity(), View.OnClickListener {
 
         // negate the `xTurn` to get the next player
         xTurn = !xTurn
+    }
+
+    private fun showWinnerDialog() {
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.winner)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
+
+        dialog.setOnDismissListener { hasEnded = true }
     }
 }
