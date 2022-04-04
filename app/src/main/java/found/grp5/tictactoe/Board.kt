@@ -84,6 +84,7 @@ class Board : AppCompatActivity(), View.OnClickListener {
                 val btn: Button = findViewById(btnId)
                 btn.setBackgroundColor(color)
             }
+            hasEnded = true
             showWinnerDialog()
             return
         } else if (ttt.draw(grid)) {
@@ -95,6 +96,9 @@ class Board : AppCompatActivity(), View.OnClickListener {
                     btn.setBackgroundColor(Color.BLACK)
                 }
             }
+            hasEnded = true
+            showDrawDialog()
+            return
         }
         // get a toast showing who has the next turn
         toast = Toast.makeText(this@Board, "Next turn: ${if (xTurn) "O" else "X"}", Toast.LENGTH_SHORT)
@@ -111,7 +115,12 @@ class Board : AppCompatActivity(), View.OnClickListener {
         dialog.setContentView(R.layout.winner)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
+    }
 
-        dialog.setOnDismissListener { hasEnded = true }
+    private  fun showDrawDialog() {
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.draw)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
     }
 }
