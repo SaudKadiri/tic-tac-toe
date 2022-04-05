@@ -11,17 +11,16 @@ import android.widget.Button
 import android.widget.Toast
 import found.grp5.tictactoe.databinding.ActivityBoardBinding
 
-class Board : AppCompatActivity(), View.OnClickListener {
+class Multiplayer : AppCompatActivity(), View.OnClickListener {
     private var xTurn = true
     private var toast: Toast? = null
     private var grid: Array<CharArray> = Array(3) { CharArray(3) }
-    val ttt = TicTacToe()
+    private val ttt = TicTacToe()
     private var hasEnded = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val viewbinding = ActivityBoardBinding.inflate(layoutInflater)
         setContentView(viewbinding.root)
 
@@ -36,6 +35,7 @@ class Board : AppCompatActivity(), View.OnClickListener {
         viewbinding.button20.setOnClickListener(this)
         viewbinding.button21.setOnClickListener(this)
         viewbinding.button22.setOnClickListener(this)
+
     }
 
 
@@ -43,7 +43,6 @@ class Board : AppCompatActivity(), View.OnClickListener {
         if (hasEnded) {
             return
         }
-
         toast?.cancel()
 
         // get the actual button which was pressed
@@ -101,7 +100,7 @@ class Board : AppCompatActivity(), View.OnClickListener {
             return
         }
         // get a toast showing who has the next turn
-        toast = Toast.makeText(this@Board, "Next turn: ${if (xTurn) "O" else "X"}", Toast.LENGTH_SHORT)
+        toast = Toast.makeText(this@Multiplayer, "Next turn: ${if (xTurn) "O" else "X"}", Toast.LENGTH_SHORT)
 
         // display the toast
         toast?.show()

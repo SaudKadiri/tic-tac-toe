@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tictactoe" >
         <activity
-            android:name=".Board"
+            android:name=".Multiplayer"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
