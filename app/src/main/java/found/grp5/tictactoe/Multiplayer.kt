@@ -73,32 +73,11 @@ class Multiplayer : AppCompatActivity(), View.OnClickListener {
         // set the text size on the button
         button.setTextSize(TypedValue.COMPLEX_UNIT_SP, 72f)
 
-        // winner return winner's name if there is one else null
-        val winner = ttt.winner(grid)
-        if (winner.name != null) {
-            hasEnded = true
-            val color = Color.GREEN
-            for (b in winner.co_ords) {
-                val btnId = resources.getIdentifier("button_${b.first}${b.second}", "id", packageName)
-                val btn: Button = findViewById(btnId)
-                btn.setBackgroundColor(color)
-            }
-            hasEnded = true
-            showWinnerDialog()
-            return
-        } else if (ttt.draw(grid)) {
-            hasEnded = true
-            for (i in 0 .. 2) {
-                for (j in 0 .. 2) {
-                    val btnId = resources.getIdentifier("button_${i}${j}", "id", packageName)
-                    val btn: Button = findViewById(btnId)
-                    btn.setBackgroundColor(Color.BLACK)
-                }
-            }
-            hasEnded = true
-            showDrawDialog()
+        hasEnded = gameEnds()
+        if (hasEnded) {
             return
         }
+
         // get a toast showing who has the next turn
         toast = Toast.makeText(this@Multiplayer, "Next turn: ${if (xTurn) "O" else "X"}", Toast.LENGTH_SHORT)
 
@@ -121,5 +100,31 @@ class Multiplayer : AppCompatActivity(), View.OnClickListener {
         dialog.setContentView(R.layout.draw)
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
+    }
+
+    fun gameEnds(): Boolean {
+        // winner return winner's name if there is one else null
+        val winner = ttt.winner(grid)
+        if (winner.name != null) {
+            val color = Color.GREEN
+            for (b in winner.co_ords) {
+                val btnId = resources.getIdentifier("button_${b.first}${b.second}", "id", packageName)
+                val btn: Button = findViewById(btnId)
+                btn.setBackgroundColor(color)
+            }
+            showWinnerDialog()
+            return true
+        } else if (ttt.draw(grid)) {
+            for (i in 0 .. 2) {
+                for (j in 0 .. 2) {
+                    val btnId = resources.getIdentifier("button_${i}${j}", "id", packageName)
+                    val btn: Button = findViewById(btnId)
+                    btn.setBackgroundColor(Color.BLACK)
+                }
+            }
+            showDrawDialog()
+            return true
+        }
+        return false
     }
 }

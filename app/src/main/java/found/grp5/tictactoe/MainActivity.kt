@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         val vsComputerBtn: Button = findViewById(R.id.vs_comp_btn)
         vsComputerBtn.setOnClickListener {
-            val intent = Intent(this, Multiplayer::class.java)
+            val intent = Intent(this, Computer::class.java)
             startActivity(intent)
         }
     }

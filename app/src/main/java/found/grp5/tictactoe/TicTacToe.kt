@@ -1,5 +1,7 @@
 package found.grp5.tictactoe
 
+import android.util.Log
+
 data class Win(val name: Char?, val co_ords: Array<Pair<Int, Int>>)
 
 class TicTacToe {
@@ -40,5 +42,18 @@ class TicTacToe {
             }
         }
         return true
+    }
+
+    fun play(board: Array<CharArray>): Pair<Int, Int> {
+        val available: MutableList<Pair<Int, Int>> = arrayListOf()
+        for ((i, row) in board.withIndex()) {
+            for ((j, cell) in row.withIndex()) {
+                if (cell == '\u0000') {
+                    available.add(Pair(i, j))
+                }
+            }
+        }
+        val i = (0 until available.size).random()
+        return available[i]
     }
 }
