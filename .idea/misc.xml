@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/cse6/Tictactoe/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.20092592592592592" />
+        <entry key="..\:/cse6/Tictactoe/app/src/main/res/drawable/ic_launcher_background.xml" value="0.20092592592592592" />
         <entry key="..\:/cse6/Tictactoe/app/src/main/res/drawable/tile.xml" value="0.290625" />
-        <entry key="..\:/cse6/Tictactoe/app/src/main/res/layout/activity_board.xml" value="0.176" />
-        <entry key="..\:/cse6/Tictactoe/app/src/main/res/layout/activity_main.xml" value="0.26268115942028986" />
+        <entry key="..\:/cse6/Tictactoe/app/src/main/res/layout/activity_board.xml" value="0.2" />
+        <entry key="..\:/cse6/Tictactoe/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/cse6/Tictactoe/app/src/main/res/layout/choose_player.xml" value="0.264" />
         <entry key="..\:/cse6/Tictactoe/app/src/main/res/layout/draw.xml" value="0.2265625" />
         <entry key="..\:/cse6/Tictactoe/app/src/main/res/layout/lost.xml" value="0.23958333333333334" />
